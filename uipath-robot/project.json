@@ -1,5 +1,5 @@
 {
-  "name": "LibrosPrestados",
+  "name": "MiniBiblioteca",
   "projectId": "f8863d71-4a83-40d8-9046-2257033b877a",
   "description": "Automatización de un reporte con el listado de los libros más prestados en un período de tiempo a partir de la base de datos de la biblioteca.",
   "main": "Main.xaml",
