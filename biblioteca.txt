@@ -1,0 +1,255 @@
+"IF NOT EXISTS (SELECT 1 FROM [Libros] WHERE [Título] = @Título AND [Autor] = @Autor)
+    INSERT INTO [Libros]([Título], [Autor], [Editorial], [Categoría], [Publicación]) 
+    VALUES(@Título, @Autor, @Editorial, @Categoría, @Publicación);"
+
+
+
+"SELECT 
+    L.[Título],
+    L.[Autor],
+    L.[Categoría],
+    COUNT(P.idLibro) AS CantidadDePréstamos
+FROM Prestamos P
+INNER JOIN Libros L ON L.id = P.idLibro
+GROUP BY 
+    L.[Título],
+    L.[Autor],
+    L.[Categoría]
+ORDER BY CantidadDePréstamos DESC;"
+
+
+UPDATE Préstamos
+GO
+-- 🔸 1. La bestia - Carmen Mola
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'La bestia' AND Autor = 'Carmen Mola')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('La bestia', 'Carmen Mola', 'Editorial Planeta', 'Misterio y suspense', 2021);
+DECLARE @id1 INT = (SELECT id FROM Libros WHERE Título = 'La bestia' AND Autor = 'Carmen Mola');
+DECLARE @i1 INT = 1;
+WHILE @i1 <= 964
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id1, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i1 += 1;
+END;
+
+-- 🔸 2. De ninguna parte - Julia Navarro
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'De ninguna parte' AND Autor = 'Julia Navarro')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('De ninguna parte', 'Julia Navarro', 'Plaza & Janés', 'Narrativa contemporánea', 2021);
+DECLARE @id2 INT = (SELECT id FROM Libros WHERE Título = 'De ninguna parte' AND Autor = 'Julia Navarro');
+DECLARE @i2 INT = 1;
+WHILE @i2 <= 875
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id2, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i2 += 1;
+END;
+
+-- 🔸 3. Últimos días en Berlín - Paloma Sánchez-Garnica
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Últimos días en Berlín' AND Autor = 'Paloma Sánchez-Garnica')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Últimos días en Berlín', 'Paloma Sánchez-Garnica', 'Editorial Planeta', 'Narrativa contemporánea', 2021);
+DECLARE @id3 INT = (SELECT id FROM Libros WHERE Título = 'Últimos días en Berlín' AND Autor = 'Paloma Sánchez-Garnica');
+DECLARE @i3 INT = 1;
+WHILE @i3 <= 867
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id3, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i3 += 1;[PK__Prestamo__3213E83F684DDAA9]
+END;
+
+-- 🔸 4. Violeta - Isabel Allende
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Violeta' AND Autor = 'Isabel Allende')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Violeta', 'Isabel Allende', 'Plaza & Janés', 'Narrativa contemporánea', 2022);
+DECLARE @id4 INT = (SELECT id FROM Libros WHERE Título = 'Violeta' AND Autor = 'Isabel Allende');
+DECLARE @i4 INT = 1;
+WHILE @i4 <= 774
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id4, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i4 += 1;
+END;
+
+-- 🔸 5. El libro negro de las horas - Eva García Sáenz de Urturi
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'El libro negro de las horas' AND Autor = 'Eva García Sáenz de Urturi')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('El libro negro de las horas', 'Eva García Sáenz de Urturi', 'Editorial Planeta', 'Misterio y suspense', 2022);
+DECLARE @id5 INT = (SELECT id FROM Libros WHERE Título = 'El libro negro de las horas' AND Autor = 'Eva García Sáenz de Urturi');
+DECLARE @i5 INT = 1;
+WHILE @i5 <= 743
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id5, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i5 += 1;
+END;
+
+-- 🔸 6. El italiano - Arturo Pérez-Reverte
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'El italiano' AND Autor = 'Arturo Pérez-Reverte')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('El italiano', 'Arturo Pérez-Reverte', 'Alfaguara', 'Narrativa histórica', 2021);
+DECLARE @id6 INT = (SELECT id FROM Libros WHERE Título = 'El italiano' AND Autor = 'Arturo Pérez-Reverte');
+DECLARE @i6 INT = 1;
+WHILE @i6 <= 702
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id6, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i6 += 1;
+END;
+
+-- 🔸 7. La novia gitana - Carmen Mola
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'La novia gitana' AND Autor = 'Carmen Mola')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('La novia gitana', 'Carmen Mola', 'Alfaguara', 'Misterio y suspense', 2018);
+DECLARE @id7 INT = (SELECT id FROM Libros WHERE Título = 'La novia gitana' AND Autor = 'Carmen Mola');
+DECLARE @i7 INT = 1;
+WHILE @i7 <= 634
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id7, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i7 += 1;
+END;
+
+-- 🔸 8. El mentiroso - Mikel Santiago
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'El mentiroso' AND Autor = 'Mikel Santiago')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('El mentiroso', 'Mikel Santiago', 'Ediciones B', 'Misterio y suspense', 2020);
+DECLARE @id8 INT = (SELECT id FROM Libros WHERE Título = 'El mentiroso' AND Autor = 'Mikel Santiago');
+DECLARE @i8 INT = 1;
+WHILE @i8 <= 614
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id8, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i8 += 1;
+END;
+
+-- 🔸 9. La chica italiana - Lucinda Riley
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'La chica italiana' AND Autor = 'Lucinda Riley')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('La chica italiana', 'Lucinda Riley', 'Plaza & Janés', 'Narrativa romántica', 2021);
+DECLARE @id9 INT = (SELECT id FROM Libros WHERE Título = 'La chica italiana' AND Autor = 'Lucinda Riley');
+DECLARE @i9 INT = 1;
+WHILE @i9 <= 583
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id9, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i9 += 1;
+END;
+
+-- 🔸 10. En plena noche - Mikel Santiago
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'En plena noche' AND Autor = 'Mikel Santiago')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('En plena noche', 'Mikel Santiago', 'Ediciones B', 'Misterio y suspense', 2021);
+DECLARE @id10 INT = (SELECT id FROM Libros WHERE Título = 'En plena noche' AND Autor = 'Mikel Santiago');
+DECLARE @i10 INT = 1;
+WHILE @i10 <= 548
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id10, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i10 += 1;
+END;
+
+-- 🔸 11. Sira - María Dueñas
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Sira' AND Autor = 'María Dueñas')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Sira', 'María Dueñas', 'Editorial Planeta', 'Narrativa contemporánea', 2021);
+DECLARE @id11 INT = (SELECT id FROM Libros WHERE Título = 'Sira' AND Autor = 'María Dueñas');
+DECLARE @i11 INT = 1;
+WHILE @i11 <= 509
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id11, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i11 += 1;
+END;
+
+-- 🔸 12. Lo que la marea esconde - María Oruña
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Lo que la marea esconde' AND Autor = 'María Oruña')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Lo que la marea esconde', 'María Oruña', 'Ediciones Destino', 'Misterio y suspense', 2021);
+DECLARE @id12 INT = (SELECT id FROM Libros WHERE Título = 'Lo que la marea esconde' AND Autor = 'María Oruña');
+DECLARE @i12 INT = 1;
+WHILE @i12 <= 461
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id12, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i12 += 1;
+END;
+
+-- 🔸 13. Los vencejos - Fernando Aramburu
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Los vencejos' AND Autor = 'Fernando Aramburu')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Los vencejos', 'Fernando Aramburu', 'Tusquets Editores', 'Narrativa contemporánea', 2021);
+DECLARE @id13 INT = (SELECT id FROM Libros WHERE Título = 'Los vencejos' AND Autor = 'Fernando Aramburu');
+DECLARE @i13 INT = 1;
+WHILE @i13 <= 420
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id13, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i13 += 1;
+END;
+
+-- 🔸 14. Una historia ridícula - Luis Landero
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Una historia ridícula' AND Autor = 'Luis Landero')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Una historia ridícula', 'Luis Landero', 'Tusquets Editores', 'Narrativa romántica', 2022);
+DECLARE @id14 INT = (SELECT id FROM Libros WHERE Título = 'Una historia ridícula' AND Autor = 'Luis Landero');
+DECLARE @i14 INT = 1;
+WHILE @i14 <= 392
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id14, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i14 += 1;
+END;
+
+-- 🔸 15. Rey blanco - Juan Gómez-Jurado
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Rey blanco' AND Autor = 'Juan Gómez-Jurado')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Rey blanco', 'Juan Gómez-Jurado', 'Ediciones B', 'Misterio y suspense', 2020);
+DECLARE @id15 INT = (SELECT id FROM Libros WHERE Título = 'Rey blanco' AND Autor = 'Juan Gómez-Jurado');
+DECLARE @i15 INT = 1;
+WHILE @i15 <= 369
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id15, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i15 += 1;
+END;
+
+-- 🔸 16. Un océano para llegar a ti - Sandra Barneda
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Un océano para llegar a ti' AND Autor = 'Sandra Barneda')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Un océano para llegar a ti', 'Sandra Barneda', 'Editorial Planeta', 'Narrativa contemporánea', 2020);
+DECLARE @id16 INT = (SELECT id FROM Libros WHERE Título = 'Un océano para llegar a ti' AND Autor = 'Sandra Barneda');
+DECLARE @i16 INT = 1;
+WHILE @i16 <= 311
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id16, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i16 += 1;
+END;
+
+-- 🔸 17. Reina roja - Juan Gómez-Jurado
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Reina roja' AND Autor = 'Juan Gómez-Jurado')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Reina roja', 'Juan Gómez-Jurado', 'Ediciones B', 'Misterio y suspense', 2018);
+DECLARE @id17 INT = (SELECT id FROM Libros WHERE Título = 'Reina roja' AND Autor = 'Juan Gómez-Jurado');
+DECLARE @i17 INT = 1;
+WHILE @i17 <= 283
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id17, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i17 += 1;
+END;
+
+-- 🔸 18. Pan de limón con semillas de amapola - Cristina Campos
+IF NOT EXISTS (SELECT 1 FROM Libros WHERE Título = 'Pan de limón con semillas de amapola' AND Autor = 'Cristina Campos')
+INSERT INTO Libros (Título, Autor, Editorial, Categoría, Publicación)
+VALUES ('Pan de limón con semillas de amapola', 'Cristina Campos', 'Editorial Planeta', 'Narrativa contemporánea', 2021);
+DECLARE @id18 INT = (SELECT id FROM Libros WHERE Título = 'Pan de limón con semillas de amapola' AND Autor = 'Cristina Campos');
+DECLARE @i18 INT = 1;
+WHILE @i18 <= 247
+BEGIN
+    INSERT INTO Préstamos (idLibro, FechaPréstamo)
+    VALUES (@id18, DATEFROMPARTS(2022, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+    SET @i18 += 1;
+END;

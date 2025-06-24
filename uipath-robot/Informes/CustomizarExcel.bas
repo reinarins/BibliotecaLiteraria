@@ -5,7 +5,6 @@ Sub CustomizarExcel()
     Dim rng As Range
     Dim i As Long
 
-    On Error Resume Next
 
 ' Para cada worksheet, autoajusta el ancho de todas las columnas
 
@@ -35,9 +34,9 @@ Sub CustomizarExcel()
 
                 ' Bordes
                 rng.Borders.LineStyle = xlContinuous
+                
             End If
         End If
     Next ws
 
-    On Error GoTo 0
 End Sub
